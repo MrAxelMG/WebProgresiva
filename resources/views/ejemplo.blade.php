@@ -39,6 +39,10 @@
         body="Cuerpo de la card en vue - ejemplo 52"
     >
 
-    </ejemplo-component>
+</ejemplo-component>
+    <roles-component
+    :roles="{{ json_encode($roles)}}"
+    > 
+    </roles-component>
     </div>    
 @endsection
