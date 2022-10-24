@@ -2,7 +2,6 @@
   color: $color;
   @include gradient-bg($background);
   border-color: $border;
-
   hr {
     border-top-color: darken($border, 5%);
   }

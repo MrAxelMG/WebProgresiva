@@ -8,7 +8,6 @@
 // always return their regular pseudo-classes instead of a shimmed media query.
 //
 // Issue: https://github.com/twbs/bootstrap/issues/25195
-
 @mixin hover() {
   &:hover { @content; }
 }

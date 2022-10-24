@@ -1,5 +1,4 @@
 // Tables
-
 @mixin table-row-variant($state, $background, $border: null) {
   // Exact selectors below required to override `.table-striped` and prevent
   // inheritance to nested tables.
