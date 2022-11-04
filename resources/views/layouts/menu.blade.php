@@ -6,7 +6,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+        <div class="sidebar-brand-text mx-3">Proyecto</div>
     </a>
 
     <!-- Divider -->
@@ -14,64 +14,19 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{ url('admin') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a>
+            <span>Panel de administración</span></a>
     </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider">
 
     <!-- Heading -->
-    <div class="sidebar-heading">
-        Interface
-    </div>
+    <div class="sidebar-heading">ACL</div>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-            aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>Components</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Custom Components:</h6>
-                <a class="collapse-item" href="buttons.html">Buttons</a>
-                <a class="collapse-item" href="cards.html">Cards</a>
-            </div>
-        </div>
-    </li>
-
-    <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-            aria-expanded="true" aria-controls="collapseUtilities">
-            <i class="fas fa-fw fa-wrench"></i>
-            <span>Utilities</span>
-        </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-            data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Custom Utilities:</h6>
-                <a class="collapse-item" href="utilities-color.html">Colors</a>
-                <a class="collapse-item" href="utilities-border.html">Borders</a>
-                <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                <a class="collapse-item" href="utilities-other.html">Other</a>
-            </div>
-        </div>
-    </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        Addons
-    </div>
-
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
+    {{-- <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
             aria-expanded="true" aria-controls="collapsePages">
             <i class="fas fa-fw fa-folder"></i>
@@ -89,20 +44,62 @@
                 <a class="collapse-item" href="blank.html">Blank Page</a>
             </div>
         </div>
+    </li> --}}
+
+    <!-- Nav Item - Roles -->
+    <li class="nav-item">
+        <a class="nav-link" href=" {{ url('roles') }} ">
+            <i class="fas fa-fw fa-user-secret"></i>
+            <span>Roles</span>
+        </a>
     </li>
 
-    <!-- Nav Item - Charts -->
+    <!-- Nav Item - Usuarios -->
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Charts</span></a>
+        <a class="nav-link" href="{{ url('usuarios') }}">
+            <i class="fas fa-fw fa-user"></i>
+            <span>Usuarios</span>
+        </a>
     </li>
 
-    <!-- Nav Item - Tables -->
+    <!-- Nav Item - Permisos -->
     <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Tables</span></a>
+        <a class="nav-link" href="{{ url('permisos') }}">
+            <i class="fas fa-fw fa-lock"></i>
+            <span>Permisos</span>
+        </a>
+    </li>
+
+    <!-- Nav Item - Materias -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url('materias') }}">
+            <i class="fas fa-user-graduate"></i>
+            <span>Materias</span>
+        </a>
+    </li>
+
+    <!-- Nav Item - Escuelas -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url('escuelas') }}">
+            <i class="fas fa-school"></i>
+            <span>Escuelas</span>
+        </a>
+    </li>
+
+    <!-- Nav Item - Videojuegos -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url('videojuegos') }}">
+            <i class="fas fa-gamepad"></i>
+            <span>Videojuegos</span>
+        </a>
+    </li>
+
+    <!-- Nav Item - Ventas -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url('ventas') }}">
+            <i class="fas fa-dollar-sign"></i>
+            <span>Ventas</span>
+        </a>
     </li>
 
     <!-- Divider -->

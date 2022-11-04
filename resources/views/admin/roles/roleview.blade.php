@@ -7,24 +7,10 @@
             </div>
             
             <div class="card-body">
-                <table class="table table-striped text-center table-bordered">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>key_name</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($roles as $role)
-                            <tr>
-                                <td>{{$role->id}}</td>
-                                <td>{{$role->name}}</td>
-                                <td>{{$role->key_name}}</td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                <roles-component
+                    :roles="{{ json_encode($roles)}}"
+                > 
+                </roles-component>
             </div>
         </div>
     </div>    

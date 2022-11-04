@@ -27,4 +27,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/admin/ejemplos', [App\Http\Controllers\RoleController::class, 'index'])->name('roles');
 
 //Para acceder al antiguo menu del rol descomentar la siguiente linea:
-// Route::get('/admin/roles', [App\Http\Controllers\RoleController::class, 'index'])->name('home');
+Route::get('/admin/roles', [App\Http\Controllers\RoleController::class, 'index'])->name('home');

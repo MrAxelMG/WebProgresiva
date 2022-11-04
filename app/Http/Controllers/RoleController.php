@@ -11,10 +11,10 @@ class RoleController extends Controller
     public function index()
     {
         $roles = Role::all();
-        return view('ejemplo', compact('roles'));
+        // return view('ejemplo', compact('roles'));
         
         //Para acceder al antiguo menu del rol descomentar la siguiente linea:
-        // return view('admin.roles.roleview', compact('roles'));
+        return view('admin.roles.roleview', compact('roles'));
     }
 
     public function save(RoleRequest $request)
