@@ -5,12 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class NivelesEducativo extends Model
+class Categoria extends Model
 {
     use HasFactory;
-
-    public function escuela()
-    {
-        return $this->hasMany(Escuela::class);
-    }
+    protected $table = "categorias";
+    public $timestamps = false;
 }

@@ -4,20 +4,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Role;
 use Illuminate\Support\Str;
-use App\Http\Request\RoleRequest;
+// use App\Http\Request\RoleRequest;
 
 class RoleController extends Controller
 {
     public function index()
     {
         $roles = Role::all();
-        // return view('ejemplo', compact('roles'));
-        
-        //Para acceder al antiguo menu del rol descomentar la siguiente linea:
         return view('admin.roles.roleview', compact('roles'));
     }
 
-    public function save(RoleRequest $request)
+    public function save(Request $request)
     {
         $roles = new Role;
 
@@ -25,21 +22,23 @@ class RoleController extends Controller
         $roles->key_name = Str::slug($request->name);
         $roles->save();
 
-        return redirect('roles');
+        return response($roles);
     }
 
-    public function update($id)
+    public function update(Request $request)
     {
-        $roles = Role::find($id);
+        $roles = Role::find($request->id);
 
-        $roles->name = 'Administrativos';
-        $roles->key_name = 'administrativos';
-
+        $roles->name = $request->name;
+        $roles->key_name = Str::slug($request->name);
         $roles->update();
+        
+        return response($roles);
+
     }
 
-    public function delete($id)
+    public function delete(Request $request)
     {
-       Role::find($id)->delete();
+       Role::find($request->id)->delete();
     }
 }

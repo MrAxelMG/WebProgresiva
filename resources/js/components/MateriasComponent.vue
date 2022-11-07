@@ -18,14 +18,14 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="role in rolesTable" :key="role.id">
-          <td>{{ role.id }}</td>
-          <td>{{ role.name }}</td>
+        <tr v-for="materia in materiasTable" :key="materia.id">
+          <td>{{ materia.id }}</td>
+          <td>{{ materia.name }}</td>
           <td>
             <button
               type="button"
               class="btn btn-success btn-sm"
-              @click="editFormModal(role)"
+              @click="editFormModal(materia)"
             >
               <i class="fas fa-fw fa-edit"></i>
               Editar
@@ -33,7 +33,7 @@
             <button
               type="button"
               class="btn btn-danger btn-sm"
-              @click="deleteFormModal(role.id)"
+              @click="deleteFormModal(materia.id)"
             >
               <i class="fas fa-fw fa-trash"></i>
               Eliminar
@@ -57,8 +57,8 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLongTitle">
-              <span v-if="Type == 'add'">Agregar rol</span>
-              <span v-else>Editar rol</span>
+              <span v-if="Type == 'add'">Agregar materia</span>
+              <span v-else>Editar materia</span>
             </h5>
             <button
               type="button"
@@ -70,12 +70,12 @@
             </button>
           </div>
           <div class="modal-body">
-            <form action="" id="formRoles">
+            <form action="" id="formMaterias">
               <div class="mb-3">
                 <input name="id" type="hidden" v-model="fields.id" />
                 <label for="name" class="form-label">Nombre</label>
                 <input
-                  type="email"
+                  type="text"
                   name="name"
                   v-model="fields.name"
                   class="form-control"
@@ -107,14 +107,14 @@ import { Modal } from "bootstrap";
 
 export default {
   props: {
-    roles: {
+    materias: {
       type: [Object, Array],
       required: true,
     },
   },
   data() {
     return {
-      rolesTable: this.roles,
+      materiasTable: this.materias,
       Type: "add",
       fields: {
         id: "",
@@ -139,10 +139,10 @@ export default {
       this.fields.name = "";
       this.openModal();
     },
-    editFormModal(role) {
+    editFormModal(materia) {
       this.Type = "edit";
-      this.fields.id = role.id;
-      this.fields.name = role.name;
+      this.fields.id = materia.id;
+      this.fields.name = materia.name;
       this.openModal();
     },
     deleteFormModal(id) {
@@ -159,7 +159,7 @@ export default {
       }).then((result) => {
         if (result.value) {
           axios
-            .post("/admin/roles/delete", {
+            .post("/admin/materias/delete", {
               id: id,
             })
             .then((response) => {
@@ -197,28 +197,26 @@ export default {
       });
     },
     addUpdateElement() {
-      const form = document.getElementById("formRoles");
+      const form = document.getElementById("formMaterias");
       const formData = new FormData(form);
 
       if (this.Type == "add") {
-        let count = this.rolesTable.length + 1;
-        this.rolesTable.push({ id: count, name: this.fields.name });
+        let count = this.materiasTable.length + 1;
+        this.materiasTable.push({ id: count, name: this.fields.name });
 
         axios
-          .post("/admin/roles/save", formData)
+          .post("/admin/materias/save", formData)
           .then((response) => {
             if (response.status == 200) {
-              if (response.status == 200) {
-                Swal.fire({
-                  icon: "success",
-                  title:
-                    '<h1 style="font-family: Poppins; font-weight: 700;">Registro añadido</h1>',
-                  html: '<p style="font-family: Poppins">El registro ha sido guardado correctamente</p>',
-                  confirmButtonText:
-                    '<a style="font-family: Poppins">Aceptar</a>',
-                  confirmButtonColor: "#01bbcc",
-                });
-              }
+              Swal.fire({
+                icon: "success",
+                title:
+                  '<h1 style="font-family: Poppins; font-weight: 700;">Registro añadido</h1>',
+                html: '<p style="font-family: Poppins">El registro ha sido guardado correctamente</p>',
+                confirmButtonText:
+                  '<a style="font-family: Poppins">Aceptar</a>',
+                confirmButtonColor: "#01bbcc",
+              });
             }
           })
           .catch((err) => {
@@ -232,13 +230,13 @@ export default {
             });
           });
       } else {
-        let upd_obj = this.rolesTable.findIndex(
+        let upd_obj = this.materiasTable.findIndex(
           (obj) => obj.id == this.fields.id
         );
-        this.rolesTable[upd_obj].name = this.fields.name;
+        this.materiasTable[upd_obj].name = this.fields.name;
 
         axios
-          .post("/admin/roles/update", formData)
+          .post("/admin/materias/update", formData)
           .then((response) => {
             if (response.status == 200) {
               Swal.fire({

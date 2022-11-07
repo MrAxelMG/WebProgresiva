@@ -14,18 +14,24 @@
         <tr>
           <th>ID</th>
           <th>Nombre</th>
+          <th>Apellido paterno</th>
+          <th>Apellido materno</th>
+          <th>Correo</th>
           <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="role in rolesTable" :key="role.id">
-          <td>{{ role.id }}</td>
-          <td>{{ role.name }}</td>
+        <tr v-for="usuario in usuariosTable" :key="usuario.id">
+          <td>{{ usuario.id }}</td>
+          <td>{{ usuario.nombre }}</td>
+          <td>{{ usuario.apellidop }}</td>
+          <td>{{ usuario.apellidom }}</td>
+          <td>{{ usuario.email }}</td>
           <td>
             <button
               type="button"
               class="btn btn-success btn-sm"
-              @click="editFormModal(role)"
+              @click="editFormModal(usuario)"
             >
               <i class="fas fa-fw fa-edit"></i>
               Editar
@@ -33,7 +39,7 @@
             <button
               type="button"
               class="btn btn-danger btn-sm"
-              @click="deleteFormModal(role.id)"
+              @click="deleteFormModal(usuario.id)"
             >
               <i class="fas fa-fw fa-trash"></i>
               Eliminar
@@ -53,12 +59,12 @@
       aria-labelledby="exampleModalCenterTitle"
       aria-hidden="true"
     >
-      <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLongTitle">
-              <span v-if="Type == 'add'">Agregar rol</span>
-              <span v-else>Editar rol</span>
+              <span v-if="Type == 'add'">Agregar usuarios</span>
+              <span v-else>Editar usuarios</span>
             </h5>
             <button
               type="button"
@@ -70,18 +76,64 @@
             </button>
           </div>
           <div class="modal-body">
-            <form action="" id="formRoles">
-              <div class="mb-3">
-                <input name="id" type="hidden" v-model="fields.id" />
-                <label for="name" class="form-label">Nombre</label>
-                <input
-                  type="email"
-                  name="name"
-                  v-model="fields.name"
-                  class="form-control"
-                  id="name"
-                  aria-describedby="nombre"
-                />
+            <form action="" id="formUsuarios">
+              <input name="id" type="hidden" v-model="fields.id" />
+              <div class="row">
+                <div class="col-md-6 col-12 mb-3">
+                  <label for="nombreInput">Nombre</label>
+                  <input
+                    type="text"
+                    v-model="fields.nombre"
+                    class="form-control"
+                    id="nombreInput"
+                    name="nombre"
+                    required
+                  />
+                </div>
+                <div class="col-md-6 col-12 mb-3">
+                  <label for="apellidoPInput">Apellido paterno</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="apellidoPInput"
+                    name="apellidop"
+                    v-model="fields.apellidop"
+                    required
+                  />
+                </div>
+                <div class="col-md-6 col-12 mb-3">
+                  <label for="apellidoMInput">Apellido materno</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="apellidoMInput"
+                    name="apellidom"
+                    v-model="fields.apellidom"
+                    required
+                  />
+                </div>
+                <div class="col-md-6 col-12 mb-3">
+                  <label for="emailInput">Correo</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="emailInput"
+                    name="email"
+                    v-model="fields.email"
+                    required
+                  />
+                </div>
+                <div class="col-md-6 col-12 mb-3">
+                  <label for="passwordInput">Contraseña</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="passwordInput"
+                    name="password"
+                    v-model="fields.password"
+                    required
+                  />
+                </div>
               </div>
             </form>
           </div>
@@ -107,18 +159,22 @@ import { Modal } from "bootstrap";
 
 export default {
   props: {
-    roles: {
+    usuarios: {
       type: [Object, Array],
       required: true,
     },
   },
   data() {
     return {
-      rolesTable: this.roles,
+      usuariosTable: this.usuarios,
       Type: "add",
       fields: {
         id: "",
-        name: "",
+        nombre: "",
+        apellidop: "",
+        apellidom: "",
+        email: "",
+        foto_perfil: "",
       },
     };
   },
@@ -131,18 +187,30 @@ export default {
       this.modal.show();
     },
     closeModal() {
-      this.fields.name = "";
+      this.fields.nombre = "";
+      this.fields.apellidop = "";
+      this.fields.apellidom = "";
+      this.fields.email = "";
+      this.fields.foto_perfil = "";
       this.modal.hide();
     },
     addFormModal() {
       this.Type = "add";
-      this.fields.name = "";
+      this.fields.nombre = "";
+      this.fields.apellidop = "";
+      this.fields.apellidom = "";
+      this.fields.email = "";
+      this.fields.foto_perfil = "";
       this.openModal();
     },
-    editFormModal(role) {
+    editFormModal(usuario) {
       this.Type = "edit";
-      this.fields.id = role.id;
-      this.fields.name = role.name;
+      this.fields.id = usuario.id;
+      this.fields.nombre = usuario.nombre;
+      this.fields.apellidop = usuario.apellidop;
+      this.fields.apellidom = usuario.apellidom;
+      this.fields.email = usuario.email;
+      this.fields.foto_perfil = usuario.foto_perfil;
       this.openModal();
     },
     deleteFormModal(id) {
@@ -159,7 +227,7 @@ export default {
       }).then((result) => {
         if (result.value) {
           axios
-            .post("/admin/roles/delete", {
+            .post("/admin/usuarios/delete", {
               id: id,
             })
             .then((response) => {
@@ -197,28 +265,33 @@ export default {
       });
     },
     addUpdateElement() {
-      const form = document.getElementById("formRoles");
+      const form = document.getElementById("formUsuarios");
       const formData = new FormData(form);
 
       if (this.Type == "add") {
-        let count = this.rolesTable.length + 1;
-        this.rolesTable.push({ id: count, name: this.fields.name });
+        let count = this.usuariosTable.length + 1;
+        this.usuariosTable.push({
+          id: count,
+          nombre: this.fields.nombre,
+          apellidop: this.fields.apellidop,
+          apellidom: this.fields.apellidom,
+          email: this.fields.email,
+          foto_perfil: this.fields.foto_perfil,
+        });
 
         axios
-          .post("/admin/roles/save", formData)
+          .post("/admin/usuarios/save", formData)
           .then((response) => {
             if (response.status == 200) {
-              if (response.status == 200) {
-                Swal.fire({
-                  icon: "success",
-                  title:
-                    '<h1 style="font-family: Poppins; font-weight: 700;">Registro añadido</h1>',
-                  html: '<p style="font-family: Poppins">El registro ha sido guardado correctamente</p>',
-                  confirmButtonText:
-                    '<a style="font-family: Poppins">Aceptar</a>',
-                  confirmButtonColor: "#01bbcc",
-                });
-              }
+              Swal.fire({
+                icon: "success",
+                title:
+                  '<h1 style="font-family: Poppins; font-weight: 700;">Registro añadido</h1>',
+                html: '<p style="font-family: Poppins">El registro ha sido guardado correctamente</p>',
+                confirmButtonText:
+                  '<a style="font-family: Poppins">Aceptar</a>',
+                confirmButtonColor: "#01bbcc",
+              });
             }
           })
           .catch((err) => {
@@ -232,13 +305,13 @@ export default {
             });
           });
       } else {
-        let upd_obj = this.rolesTable.findIndex(
+        let upd_obj = this.usuariosTable.findIndex(
           (obj) => obj.id == this.fields.id
         );
-        this.rolesTable[upd_obj].name = this.fields.name;
+        this.usuariosTable[upd_obj].nombre = this.fields.nombre;
 
         axios
-          .post("/admin/roles/update", formData)
+          .post("/admin/usuarios/update", formData)
           .then((response) => {
             if (response.status == 200) {
               Swal.fire({

@@ -48,7 +48,7 @@
 
     <!-- Nav Item - Roles -->
     <li class="nav-item">
-        <a class="nav-link" href=" {{ url('roles') }} ">
+        <a class="nav-link" href=" {{ url('/admin/roles') }} ">
             <i class="fas fa-fw fa-user-secret"></i>
             <span>Roles</span>
         </a>
@@ -56,23 +56,31 @@
 
     <!-- Nav Item - Usuarios -->
     <li class="nav-item">
-        <a class="nav-link" href="{{ url('usuarios') }}">
+        <a class="nav-link" href="{{ url('/admin/usuarios') }}">
             <i class="fas fa-fw fa-user"></i>
             <span>Usuarios</span>
         </a>
     </li>
 
-    <!-- Nav Item - Permisos -->
+    {{-- <!-- Nav Item - Permisos -->
     <li class="nav-item">
-        <a class="nav-link" href="{{ url('permisos') }}">
+        <a class="nav-link" href="{{ url('/admin/permisos') }}">
             <i class="fas fa-fw fa-lock"></i>
             <span>Permisos</span>
+        </a>
+    </li> --}}
+
+    <!-- Nav Item - Categorías -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url('/admin/categorias') }}">
+            <i class="fas fa-tv"></i>
+            <span>Categorías</span>
         </a>
     </li>
 
     <!-- Nav Item - Materias -->
     <li class="nav-item">
-        <a class="nav-link" href="{{ url('materias') }}">
+        <a class="nav-link" href="{{ url('/admin/materias') }}">
             <i class="fas fa-user-graduate"></i>
             <span>Materias</span>
         </a>
@@ -80,7 +88,7 @@
 
     <!-- Nav Item - Escuelas -->
     <li class="nav-item">
-        <a class="nav-link" href="{{ url('escuelas') }}">
+        <a class="nav-link" href="{{ url('/admin/escuelas') }}">
             <i class="fas fa-school"></i>
             <span>Escuelas</span>
         </a>
@@ -88,19 +96,19 @@
 
     <!-- Nav Item - Videojuegos -->
     <li class="nav-item">
-        <a class="nav-link" href="{{ url('videojuegos') }}">
+        <a class="nav-link" href="{{ url('/admin/videojuegos') }}">
             <i class="fas fa-gamepad"></i>
             <span>Videojuegos</span>
         </a>
     </li>
 
-    <!-- Nav Item - Ventas -->
+    {{-- <!-- Nav Item - Ventas -->
     <li class="nav-item">
-        <a class="nav-link" href="{{ url('ventas') }}">
+        <a class="nav-link" href="{{ url('/admin/ventas') }}">
             <i class="fas fa-dollar-sign"></i>
             <span>Ventas</span>
         </a>
-    </li>
+    </li> --}}
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

@@ -11,35 +11,39 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    protected $table = "users";
+    public $timestamps = false;
+
     /**
      * The attributes that are mass assignable.
      *
-     * @var array
+     * @var array<int, string>
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'nombre', 'apellidop', 'apellidom', 'email', 'password',
     ];
 
     /**
-     * The attributes that should be hidden for arrays.
+     * The attributes that should be hidden for serialization.
      *
-     * @var array
+     * @var array<int, string>
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        // 'remember_token',
     ];
 
     /**
-     * The attributes that should be cast to native types.
+     * The attributes that should be cast.
      *
-     * @var array
+     * @var array<string, string>
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    // protected $casts = [
+    //     'email_verified_at' => 'datetime',
+    // ];
 
-    public function Role()
+    public function setPasswordAttribute($password)
     {
-        return $this->belongsTo(Role::class);
+        $this->attributes['password'] = bcrypt($password);
     }
 }

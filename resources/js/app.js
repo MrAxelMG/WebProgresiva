@@ -34,6 +34,31 @@ Vue.component(
     require("./components/RolesComponent.vue").default
 );
 
+Vue.component(
+    "categorias-component",
+    require("./components/CategoriasComponent.vue").default
+);
+
+Vue.component(
+    "escuelas-component",
+    require("./components/EscuelasComponent.vue").default
+);
+
+Vue.component(
+    "materias-component",
+    require("./components/MateriasComponent.vue").default
+);
+
+Vue.component(
+    "videojuegos-component",
+    require("./components/VideojuegosComponent.vue").default
+);
+
+Vue.component(
+    "usuarios-component",
+    require("./components/UsuariosComponent.vue").default
+);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
