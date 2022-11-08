@@ -6510,15 +6510,13 @@ __webpack_require__.r(__webpack_exports__);
         });
         axios.post("/admin/roles/save", formData).then(function (response) {
           if (response.status == 200) {
-            if (response.status == 200) {
-              Swal.fire({
-                icon: "success",
-                title: '<h1 style="font-family: Poppins; font-weight: 700;">Registro añadido</h1>',
-                html: '<p style="font-family: Poppins">El registro ha sido guardado correctamente</p>',
-                confirmButtonText: '<a style="font-family: Poppins">Aceptar</a>',
-                confirmButtonColor: "#01bbcc"
-              });
-            }
+            Swal.fire({
+              icon: "success",
+              title: '<h1 style="font-family: Poppins; font-weight: 700;">Registro añadido</h1>',
+              html: '<p style="font-family: Poppins">El registro ha sido guardado correctamente</p>',
+              confirmButtonText: '<a style="font-family: Poppins">Aceptar</a>',
+              confirmButtonColor: "#01bbcc"
+            });
           }
         })["catch"](function (err) {
           Swal.fire({
