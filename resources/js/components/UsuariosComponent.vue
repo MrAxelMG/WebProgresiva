@@ -187,6 +187,7 @@ export default {
       this.modal.show();
     },
     closeModal() {
+      this.fields.id = "";
       this.fields.nombre = "";
       this.fields.apellidop = "";
       this.fields.apellidom = "";
@@ -196,6 +197,7 @@ export default {
     },
     addFormModal() {
       this.Type = "add";
+      this.fields.id = "";
       this.fields.nombre = "";
       this.fields.apellidop = "";
       this.fields.apellidom = "";
@@ -269,9 +271,8 @@ export default {
       const formData = new FormData(form);
 
       if (this.Type == "add") {
-        let count = this.usuariosTable.length + 1;
         this.usuariosTable.push({
-          id: count,
+          id: this.fields.id,
           nombre: this.fields.nombre,
           apellidop: this.fields.apellidop,
           apellidom: this.fields.apellidom,
@@ -308,6 +309,7 @@ export default {
         let upd_obj = this.usuariosTable.findIndex(
           (obj) => obj.id == this.fields.id
         );
+        this.usuariosTable[upd_obj].id = this.fields.id;
         this.usuariosTable[upd_obj].nombre = this.fields.nombre;
 
         axios

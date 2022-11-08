@@ -131,11 +131,13 @@ export default {
       this.modal.show();
     },
     closeModal() {
+      this.fields.id = "";
       this.fields.name = "";
       this.modal.hide();
     },
     addFormModal() {
       this.Type = "add";
+      this.fields.id = "";
       this.fields.name = "";
       this.openModal();
     },
@@ -201,8 +203,7 @@ export default {
       const formData = new FormData(form);
 
       if (this.Type == "add") {
-        let count = this.rolesTable.length + 1;
-        this.rolesTable.push({ id: count, name: this.fields.name });
+        this.rolesTable.push({ id: this.fields.id, name: this.fields.name });
 
         axios
           .post("/admin/roles/save", formData)
@@ -235,6 +236,7 @@ export default {
         let upd_obj = this.rolesTable.findIndex(
           (obj) => obj.id == this.fields.id
         );
+        this.rolesTable[upd_obj].id = this.fields.id;
         this.rolesTable[upd_obj].name = this.fields.name;
 
         axios

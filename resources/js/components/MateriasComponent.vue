@@ -131,11 +131,13 @@ export default {
       this.modal.show();
     },
     closeModal() {
+      this.fields.id = "";
       this.fields.name = "";
       this.modal.hide();
     },
     addFormModal() {
       this.Type = "add";
+      this.fields.id = "";
       this.fields.name = "";
       this.openModal();
     },
@@ -201,8 +203,7 @@ export default {
       const formData = new FormData(form);
 
       if (this.Type == "add") {
-        let count = this.materiasTable.length + 1;
-        this.materiasTable.push({ id: count, name: this.fields.name });
+        this.materiasTable.push({ id: this.fields.id, name: this.fields.name });
 
         axios
           .post("/admin/materias/save", formData)
@@ -233,6 +234,7 @@ export default {
         let upd_obj = this.materiasTable.findIndex(
           (obj) => obj.id == this.fields.id
         );
+        this.materiasTable[upd_obj].id = this.fields.id;
         this.materiasTable[upd_obj].name = this.fields.name;
 
         axios

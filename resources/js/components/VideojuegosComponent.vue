@@ -113,11 +113,13 @@
                       id="materiaIdInput"
                       v-model="fields.materia_id"
                       required
-                      v-for="materia in materias"
-                      :key="materia.id"
                     >
                       <option value="" disabled selected>Selecciona...</option>
-                      <option :value="materia.id">
+                      <option
+                        v-for="materia in materias"
+                        :key="materia.id"
+                        :value="materia.id"
+                      >
                         {{ materia.name }}
                       </option>
                     </select>
@@ -270,6 +272,7 @@ export default {
       this.modal.show();
     },
     closeModal() {
+      this.fields.id = "";
       this.fields.nombre = "";
       this.fields.plataformas = "";
       this.fields.jugadores = "";
@@ -279,6 +282,7 @@ export default {
     },
     addFormModal() {
       this.Type = "add";
+      this.fields.id = "";
       this.fields.nombre = "";
       this.fields.plataformas = "";
       this.fields.jugadores = "";
@@ -342,9 +346,8 @@ export default {
       const formData = new FormData(form);
 
       if (this.Type == "add") {
-        let count = this.videojuegosTable.length + 1;
         this.videojuegosTable.push({
-          id: count,
+          id: this.fields.id,
           nombre: this.fields.nombre,
           plataformas: this.fields.plataformas,
           jugadores: this.fields.jugadores,
@@ -381,6 +384,7 @@ export default {
         let upd_obj = this.videojuegosTable.findIndex(
           (obj) => obj.id == this.fields.id
         );
+        this.videojuegosTable[upd_obj].id = this.fields.id;
         this.videojuegosTable[upd_obj].nombre = this.fields.nombre;
         this.videojuegosTable[upd_obj].plataformas = this.fields.plataformas;
         this.videojuegosTable[upd_obj].jugadores = this.fields.jugadores;

@@ -131,11 +131,13 @@ export default {
       this.modal.show();
     },
     closeModal() {
+      this.fields.id = "";
       this.fields.name = "";
       this.modal.hide();
     },
     addFormModal() {
       this.Type = "add";
+      this.fields.id = "";
       this.fields.name = "";
       this.openModal();
     },
@@ -203,7 +205,10 @@ export default {
 
       if (this.Type == "add") {
         let count = this.categoriasTable.length + 1;
-        this.categoriasTable.push({ id: count, name: this.fields.name });
+        this.categoriasTable.push({
+          id: this.fields.id,
+          name: this.fields.name,
+        });
 
         axios
           .post("/admin/categorias/save", formData)
@@ -234,6 +239,7 @@ export default {
         let upd_obj = this.categoriasTable.findIndex(
           (obj) => obj.id == this.fields.id
         );
+        this.categoriasTable[upd_obj].id = this.fields.id;
         this.categoriasTable[upd_obj].name = this.fields.name;
 
         axios

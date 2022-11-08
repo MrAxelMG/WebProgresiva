@@ -211,6 +211,7 @@ export default {
       this.modal.show();
     },
     closeModal() {
+      this.fields.id = "";
       this.fields.nombre = "";
       this.fields.direccion = "";
       this.fields.col_fracc = "";
@@ -222,6 +223,7 @@ export default {
     },
     addFormModal() {
       this.Type = "add";
+      this.fields.id = "";
       this.fields.nombre = "";
       this.fields.direccion = "";
       this.fields.col_fracc = "";
@@ -300,9 +302,8 @@ export default {
       const formData = new FormData(form);
 
       if (this.Type == "add") {
-        let count = this.escuelasTable.length + 1;
         this.escuelasTable.push({
-          id: count,
+          id: this.fields.id,
           nombre: this.fields.nombre,
           direccion: this.fields.direccion,
           col_fracc: this.fields.col_fracc,
@@ -341,6 +342,7 @@ export default {
         let upd_obj = this.escuelasTable.findIndex(
           (obj) => obj.id == this.fields.id
         );
+        this.escuelasTable[upd_obj].id = this.fields.id;
         this.escuelasTable[upd_obj].nombre = this.fields.nombre;
         this.escuelasTable[upd_obj].direccion = this.fields.direccion;
         this.escuelasTable[upd_obj].col_fracc = this.fields.col_fracc;

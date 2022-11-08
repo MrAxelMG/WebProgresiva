@@ -5445,11 +5445,13 @@ __webpack_require__.r(__webpack_exports__);
       this.modal.show();
     },
     closeModal: function closeModal() {
+      this.fields.id = "";
       this.fields.name = "";
       this.modal.hide();
     },
     addFormModal: function addFormModal() {
       this.Type = "add";
+      this.fields.id = "";
       this.fields.name = "";
       this.openModal();
     },
@@ -5509,7 +5511,7 @@ __webpack_require__.r(__webpack_exports__);
       if (this.Type == "add") {
         var count = this.categoriasTable.length + 1;
         this.categoriasTable.push({
-          id: count,
+          id: this.fields.id,
           name: this.fields.name
         });
         axios.post("/admin/categorias/save", formData).then(function (response) {
@@ -5535,6 +5537,7 @@ __webpack_require__.r(__webpack_exports__);
         var upd_obj = this.categoriasTable.findIndex(function (obj) {
           return obj.id == _this.fields.id;
         });
+        this.categoriasTable[upd_obj].id = this.fields.id;
         this.categoriasTable[upd_obj].name = this.fields.name;
         axios.post("/admin/categorias/update", formData).then(function (response) {
           if (response.status == 200) {
@@ -5847,6 +5850,7 @@ __webpack_require__.r(__webpack_exports__);
       this.modal.show();
     },
     closeModal: function closeModal() {
+      this.fields.id = "";
       this.fields.nombre = "";
       this.fields.direccion = "";
       this.fields.col_fracc = "";
@@ -5858,6 +5862,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     addFormModal: function addFormModal() {
       this.Type = "add";
+      this.fields.id = "";
       this.fields.nombre = "";
       this.fields.direccion = "";
       this.fields.col_fracc = "";
@@ -5927,9 +5932,8 @@ __webpack_require__.r(__webpack_exports__);
       var form = document.getElementById("formEscuelas");
       var formData = new FormData(form);
       if (this.Type == "add") {
-        var count = this.escuelasTable.length + 1;
         this.escuelasTable.push({
-          id: count,
+          id: this.fields.id,
           nombre: this.fields.nombre,
           direccion: this.fields.direccion,
           col_fracc: this.fields.col_fracc,
@@ -5961,6 +5965,7 @@ __webpack_require__.r(__webpack_exports__);
         var upd_obj = this.escuelasTable.findIndex(function (obj) {
           return obj.id == _this.fields.id;
         });
+        this.escuelasTable[upd_obj].id = this.fields.id;
         this.escuelasTable[upd_obj].nombre = this.fields.nombre;
         this.escuelasTable[upd_obj].direccion = this.fields.direccion;
         this.escuelasTable[upd_obj].col_fracc = this.fields.col_fracc;
@@ -6174,11 +6179,13 @@ __webpack_require__.r(__webpack_exports__);
       this.modal.show();
     },
     closeModal: function closeModal() {
+      this.fields.id = "";
       this.fields.name = "";
       this.modal.hide();
     },
     addFormModal: function addFormModal() {
       this.Type = "add";
+      this.fields.id = "";
       this.fields.name = "";
       this.openModal();
     },
@@ -6235,9 +6242,8 @@ __webpack_require__.r(__webpack_exports__);
       var form = document.getElementById("formMaterias");
       var formData = new FormData(form);
       if (this.Type == "add") {
-        var count = this.materiasTable.length + 1;
         this.materiasTable.push({
-          id: count,
+          id: this.fields.id,
           name: this.fields.name
         });
         axios.post("/admin/materias/save", formData).then(function (response) {
@@ -6263,6 +6269,7 @@ __webpack_require__.r(__webpack_exports__);
         var upd_obj = this.materiasTable.findIndex(function (obj) {
           return obj.id == _this.fields.id;
         });
+        this.materiasTable[upd_obj].id = this.fields.id;
         this.materiasTable[upd_obj].name = this.fields.name;
         axios.post("/admin/materias/update", formData).then(function (response) {
           if (response.status == 200) {
@@ -6434,11 +6441,13 @@ __webpack_require__.r(__webpack_exports__);
       this.modal.show();
     },
     closeModal: function closeModal() {
+      this.fields.id = "";
       this.fields.name = "";
       this.modal.hide();
     },
     addFormModal: function addFormModal() {
       this.Type = "add";
+      this.fields.id = "";
       this.fields.name = "";
       this.openModal();
     },
@@ -6495,9 +6504,8 @@ __webpack_require__.r(__webpack_exports__);
       var form = document.getElementById("formRoles");
       var formData = new FormData(form);
       if (this.Type == "add") {
-        var count = this.rolesTable.length + 1;
         this.rolesTable.push({
-          id: count,
+          id: this.fields.id,
           name: this.fields.name
         });
         axios.post("/admin/roles/save", formData).then(function (response) {
@@ -6525,6 +6533,7 @@ __webpack_require__.r(__webpack_exports__);
         var upd_obj = this.rolesTable.findIndex(function (obj) {
           return obj.id == _this.fields.id;
         });
+        this.rolesTable[upd_obj].id = this.fields.id;
         this.rolesTable[upd_obj].name = this.fields.name;
         axios.post("/admin/roles/update", formData).then(function (response) {
           if (response.status == 200) {
@@ -6752,6 +6761,7 @@ __webpack_require__.r(__webpack_exports__);
       this.modal.show();
     },
     closeModal: function closeModal() {
+      this.fields.id = "";
       this.fields.nombre = "";
       this.fields.apellidop = "";
       this.fields.apellidom = "";
@@ -6761,6 +6771,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     addFormModal: function addFormModal() {
       this.Type = "add";
+      this.fields.id = "";
       this.fields.nombre = "";
       this.fields.apellidop = "";
       this.fields.apellidom = "";
@@ -6825,9 +6836,8 @@ __webpack_require__.r(__webpack_exports__);
       var form = document.getElementById("formUsuarios");
       var formData = new FormData(form);
       if (this.Type == "add") {
-        var count = this.usuariosTable.length + 1;
         this.usuariosTable.push({
-          id: count,
+          id: this.fields.id,
           nombre: this.fields.nombre,
           apellidop: this.fields.apellidop,
           apellidom: this.fields.apellidom,
@@ -6857,6 +6867,7 @@ __webpack_require__.r(__webpack_exports__);
         var upd_obj = this.usuariosTable.findIndex(function (obj) {
           return obj.id == _this.fields.id;
         });
+        this.usuariosTable[upd_obj].id = this.fields.id;
         this.usuariosTable[upd_obj].nombre = this.fields.nombre;
         axios.post("/admin/usuarios/update", formData).then(function (response) {
           if (response.status == 200) {
@@ -7128,6 +7139,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -7167,6 +7180,7 @@ __webpack_require__.r(__webpack_exports__);
       this.modal.show();
     },
     closeModal: function closeModal() {
+      this.fields.id = "";
       this.fields.nombre = "";
       this.fields.plataformas = "";
       this.fields.jugadores = "";
@@ -7176,6 +7190,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     addFormModal: function addFormModal() {
       this.Type = "add";
+      this.fields.id = "";
       this.fields.nombre = "";
       this.fields.plataformas = "";
       this.fields.jugadores = "";
@@ -7232,9 +7247,8 @@ __webpack_require__.r(__webpack_exports__);
       var form = document.getElementById("formVideojuegos");
       var formData = new FormData(form);
       if (this.Type == "add") {
-        var count = this.videojuegosTable.length + 1;
         this.videojuegosTable.push({
-          id: count,
+          id: this.fields.id,
           nombre: this.fields.nombre,
           plataformas: this.fields.plataformas,
           jugadores: this.fields.jugadores,
@@ -7264,6 +7278,7 @@ __webpack_require__.r(__webpack_exports__);
         var upd_obj = this.videojuegosTable.findIndex(function (obj) {
           return obj.id == _this.fields.id;
         });
+        this.videojuegosTable[upd_obj].id = this.fields.id;
         this.videojuegosTable[upd_obj].nombre = this.fields.nombre;
         this.videojuegosTable[upd_obj].plataformas = this.fields.plataformas;
         this.videojuegosTable[upd_obj].jugadores = this.fields.jugadores;
@@ -32611,87 +32626,81 @@ var render = function () {
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "col-md-6 col-12" }, [
-                      _c(
-                        "div",
-                        { staticClass: "form-floating mb-3" },
-                        [
-                          _c("label", { attrs: { for: "materiaIdInput" } }, [
-                            _vm._v("Materia"),
-                          ]),
-                          _vm._v(" "),
-                          _vm._l(_vm.materias, function (materia) {
-                            return _c(
-                              "select",
+                      _c("div", { staticClass: "form-floating mb-3" }, [
+                        _c("label", { attrs: { for: "materiaIdInput" } }, [
+                          _vm._v("Materia"),
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "select",
+                          {
+                            directives: [
                               {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.fields.materia_id,
-                                    expression: "fields.materia_id",
-                                  },
-                                ],
-                                key: materia.id,
-                                staticClass: "form-control",
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.fields.materia_id,
+                                expression: "fields.materia_id",
+                              },
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              name: "materia_id",
+                              id: "materiaIdInput",
+                              required: "",
+                            },
+                            on: {
+                              change: function ($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function (o) {
+                                    return o.selected
+                                  })
+                                  .map(function (o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.fields,
+                                  "materia_id",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              },
+                            },
+                          },
+                          [
+                            _c(
+                              "option",
+                              {
                                 attrs: {
-                                  name: "materia_id",
-                                  id: "materiaIdInput",
-                                  required: "",
-                                },
-                                on: {
-                                  change: function ($event) {
-                                    var $$selectedVal = Array.prototype.filter
-                                      .call(
-                                        $event.target.options,
-                                        function (o) {
-                                          return o.selected
-                                        }
-                                      )
-                                      .map(function (o) {
-                                        var val =
-                                          "_value" in o ? o._value : o.value
-                                        return val
-                                      })
-                                    _vm.$set(
-                                      _vm.fields,
-                                      "materia_id",
-                                      $event.target.multiple
-                                        ? $$selectedVal
-                                        : $$selectedVal[0]
-                                    )
-                                  },
+                                  value: "",
+                                  disabled: "",
+                                  selected: "",
                                 },
                               },
-                              [
-                                _c(
-                                  "option",
-                                  {
-                                    attrs: {
-                                      value: "",
-                                      disabled: "",
-                                      selected: "",
-                                    },
-                                  },
-                                  [_vm._v("Selecciona...")]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "option",
-                                  { domProps: { value: materia.id } },
-                                  [
-                                    _vm._v(
-                                      "\n                      " +
-                                        _vm._s(materia.name) +
-                                        "\n                    "
-                                    ),
-                                  ]
-                                ),
-                              ]
-                            )
-                          }),
-                        ],
-                        2
-                      ),
+                              [_vm._v("Selecciona...")]
+                            ),
+                            _vm._v(" "),
+                            _vm._l(_vm.materias, function (materia) {
+                              return _c(
+                                "option",
+                                {
+                                  key: materia.id,
+                                  domProps: { value: materia.id },
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                      " +
+                                      _vm._s(materia.name) +
+                                      "\n                    "
+                                  ),
+                                ]
+                              )
+                            }),
+                          ],
+                          2
+                        ),
+                      ]),
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "col-md-6 col-12" }, [
