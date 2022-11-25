@@ -58,3 +58,7 @@ Route::post('/admin/usuarios/update', [App\Http\Controllers\UsuarioController::c
 Route::post('/admin/usuarios/delete', [App\Http\Controllers\UsuarioController::class, 'delete'])->middleware('auth');
 
 Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'destroy']);
+
+Route::get('/offline', function(){
+    return view('vendor.laravelpwa.offline');
+});
