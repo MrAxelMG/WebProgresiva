@@ -62,3 +62,5 @@ Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'destro
 Route::get('/offline', function(){
     return view('vendor.laravelpwa.offline');
 });
+
+Route::get('correo', [App\Http\Controllers\ExampleController::class, 'index']);
